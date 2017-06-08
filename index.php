@@ -12,7 +12,7 @@ require_once (dirname(__FILE__,2).'/config.php');
 
 if(!isset($_SESSION['vid'])){
     $connection = mysqli_connect(DBHOST,DBLOGIN,DBPASS,DBNAME);
-    $query = "INSERT INTO VoteUsders (name) VALUES ('none')";
+    $query = "INSERT INTO VoteUsers (name) VALUES ('none')";
     $statement = $connection->prepare($query);
     $statement->execute();
     $_SESSION['vid'] = $statement->insert_id;
