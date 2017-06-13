@@ -9,7 +9,7 @@ session_start();
  * Time: 3:38 AM
  */
 require_once (dirname(__FILE__,2).'/config.php');
-require_once 'vendor/Autoloader.php';
+require_once 'vendor/autoload.php';
 
 if(!isset($_SESSION['vid'])){
     $connection = mysqli_connect(DBHOST,DBLOGIN,DBPASS,DBNAME);
