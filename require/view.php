@@ -90,7 +90,7 @@ if (!isset($_GET['election'])) {
 
     }
     $winner = $candidates[$maxIndex];
-    
+
 }
 
 echo $environ->render("viewVotes.twig", array("userNum" => $_SESSION['vid'], "errors" => $error, "winner"=>$winner));
