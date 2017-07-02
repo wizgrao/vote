@@ -15,13 +15,14 @@
         {% endfor %}
     </ul>
 
-    <h2>{{ electionName }}</h2><br>
+    <h2>Poll: {{ electionName }}</h2><br>
+    Rank your options from 1 to {{ numCandidates }} where 1 is best. Use each number only once!
     <form action="index.php?p=vote&election={{ election }}" method="post">
 
 
 
         {%  for candidate in candidates %}
-            <select name="candidate[{{ candidate.id }}]"> {{ candidate.name }} :
+            {{ candidate.name }}: <select name="candidate[{{ candidate.id }}]">
           {% for i in 1..numCandidates %}
                         <option value = "{{ i }}">{{ i }}</option>
                 {% endfor %}
