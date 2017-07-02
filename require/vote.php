@@ -20,7 +20,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
         echo $environ->render("vote.twig", array("userNum" => $_SESSION['vid'], "errors" => $error, "candidates" => $candidates, "numCandidates" => $numCandidates, "electionName" => $electionName, "election"=>$_GET['election']));
     }else{
 
-        $ranks = array_fill(0,count($_POST['candidate']), 0);
+        $ranks = array_fill(1,count($_POST['candidate']), 0);
 
         foreach($_POST['candidate'] as $candidateID => $rank){
             $ranks[$rank] ++;
