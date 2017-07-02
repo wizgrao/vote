@@ -16,7 +16,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
 
     $statement = $connection->prepare($query);
     $statement->bind_param("si", $_POST['name'], $numChoices);
-    $numChoices = array_count_values($_POST['candidate']);
+    $numChoices = count($_POST['candidate']);
     $statement->execute();
     $electionID = $statement->insert_id;
 
