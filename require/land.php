@@ -8,4 +8,4 @@
 
 $loader = new Twig_Loader_Filesystem("require/twigs");
 $environ = new Twig_Environment($loader,array());
-echo $environ->render("landing.twig",array("userNum"=>$_SESSION['vid']));
+echo $environ->render("landing.twig?p=create",array("userNum"=>$_SESSION['vid']));

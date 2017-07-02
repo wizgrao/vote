@@ -17,6 +17,7 @@ if(!isset($_SESSION['vid'])){
     $statement = $connection->prepare($query);
     $statement->execute();
     $_SESSION['vid'] = $statement->insert_id;
+
     $statement->close();
     $connection->close();
 
