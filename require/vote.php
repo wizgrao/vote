@@ -17,8 +17,9 @@ $electionName = "";
 if($_SERVER['REQUEST_METHOD'] == "POST"){
     if (!isset($_GET['election'])) {
         $error[] = "No election set";
-        echo $environ->render("vote.twig", array("userNum" => $_SESSION['vid'], "errors" => $error, "candidates" => $candidates, "numCandidates" => $numCandidates, "electionName" => $electionName));
+        echo $environ->render("vote.twig", array("userNum" => $_SESSION['vid'], "errors" => $error, "candidates" => $candidates, "numCandidates" => $numCandidates, "electionName" => $electionName, "election"=>$_GET['election']));
     }else{
+
         $ranks = array_fill(0,count($_POST['candidate']), 0);
 
         foreach($_POST['candidate'] as $candidateID => $rank){
@@ -33,7 +34,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
         }
         if($flag ==1){
             $error[] = "use each number exactly once";
-            echo $environ->render("vote.twig", array("userNum" => $_SESSION['vid'], "errors" => $error, "candidates" => $candidates, "numCandidates" => $numCandidates, "electionName" => $electionName));
+            echo $environ->render("vote.twig", array("userNum" => $_SESSION['vid'], "errors" => $error, "candidates" => $candidates, "numCandidates" => $numCandidates, "electionName" => $electionName, "election"=>$_GET['election']));
         }else{
             $connection = mysqli_connect(DBHOST,DBLOGIN,DBPASS,DBNAME);
             $voteQuery = "INSERT INTO votes (rank, electionID, choiceID, userID) VALUES (?,?,?,?)";
@@ -73,5 +74,5 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
 
     }
 
-    echo $environ->render("vote.twig", array("userNum" => $_SESSION['vid'], "errors" => $error, "candidates" => $candidates, "numCandidates" => $numCandidates, "electionName" => $electionName));
+    echo $environ->render("vote.twig", array("userNum" => $_SESSION['vid'], "errors" => $error, "candidates" => $candidates, "numCandidates" => $numCandidates, "electionName" => $electionName,"election"=>$_GET['election']));
 }
