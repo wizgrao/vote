@@ -28,7 +28,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
         }
         $flag = 0;
         foreach ($ranks as $ran){
-            if($ran != 0){
+            if($ran != 1){
                 $flag = 1;
             }
         }
