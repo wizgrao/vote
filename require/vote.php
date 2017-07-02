@@ -15,6 +15,7 @@ $environ = new Twig_Environment($loader,array());
 $error = array();
 $candidates = array();
 $numCandidates =0;
+$electionName = "";
 if(!isset($_GET['election'])){
     $error[] = "No election set";
 }else{
@@ -27,7 +28,7 @@ if(!isset($_GET['election'])){
     $statement->bind_result($electionN, $candidateName, $candidateID);
     $numCandidates =0;
     $candidates = array();
-    $electionName = "";
+
 
     while($statement->fetch()){
         $numCandidates++;
