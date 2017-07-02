@@ -22,8 +22,8 @@
 
         {%  for candidate in candidates %}
             <select name="candidate[{{ candidate.id }}]"> {{ candidate.name }} :
-                {% for i in 1..{{ numCandidates }} %}
-                    <option value = "{{ i }}">{{ i }}</option>
+          {% for i in 1..numCandidates %}
+                        <option value = "{{ i }}">{{ i }}</option>
                 {% endfor %}
             </select><br>
         {% endfor %}
