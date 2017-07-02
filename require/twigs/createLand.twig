@@ -6,4 +6,16 @@
 {% endblock %}
 {% block content %}
    Your election ID: {{ electionID }}
+   <form action="index.php" method="get">
+      <input type="hidden" name="p" value="view"/><br/>
+
+      <input type="hidden" name="election" value="{{ electionID }}"/>
+      <input type="submit" value = "View Results"/>
+   </form>
+    <form action="index.php" method="get">
+        <input type="hidden" name="p" value="vote"/><br/>
+
+        <input type="hidden" name="election" value="{{ electionID }}"/>
+        <input type="submit" value = "Vote"/>
+    </form>
 {% endblock %}

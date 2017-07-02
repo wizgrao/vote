@@ -37,6 +37,14 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
             echo $environ->render("vote.twig", array("userNum" => $_SESSION['vid'], "errors" => $error, "candidates" => $candidates, "numCandidates" => $numCandidates, "electionName" => $electionName, "election"=>$_GET['election']));
         }else{
             $connection = mysqli_connect(DBHOST,DBLOGIN,DBPASS,DBNAME);
+
+            $deleteQuery = "DELETE FROM votes WHERE userID = ?";
+            $deleteStatement = $connection->prepare($deleteQuery);
+            $deleteStatement->bind_param("i",$_SESSION['vid']);
+            $deleteStatement->execute();
+            $deleteStatement->close();
+
+
             $voteQuery = "INSERT INTO votes (rank, electionID, choiceID, userID) VALUES (?,?,?,?)";
 
             $voteStatement = $connection->prepare($voteQuery);
@@ -46,6 +54,8 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
             foreach($_POST['candidate'] as $candidateID => $rank){
                 $voteStatement->execute();
             }
+            $voteStatement->close();
+            $connection->close();
             echo $environ->render("voteLand.twig", array("userNum" => $_SESSION['vid'], "errors" => $error,  "electionName" => $electionName, "election"=>$_GET['election']));
 
 
@@ -56,6 +66,8 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
         $error[] = "No election set";
     } else {
         $connection = mysqli_connect(DBHOST, DBLOGIN, DBPASS, DBNAME);
+
+
 
         $query = "SELECT elections.name as electionName, choices.name as candidateName, choices.id as candidateID  FROM elections, choices WHERE elections.id = choices.election AND elections.id = ? ";
         $statement = $connection->prepare($query);

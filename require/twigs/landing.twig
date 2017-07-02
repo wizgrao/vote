@@ -1,4 +1,20 @@
 {% extends "base.twig" %}
 {% block content %}
-   <h1> {{ userNum }}</h1>
+    <h1>Welcome to my Instant Runoff Voting platform!</h1>
+    Instant Runoff Voting, Also known as the alternative vote, is a system of ranked voting! CGP Grey explains this much better than I can:
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/3Y3jE3B8HsE" frameborder="0" allowfullscreen></iframe>
+    <br>
+    <a href = "index.php?p=create">Click Here to create a Poll using the IRV method</a><br>
+    <form action="index.php" method="get">
+        <input type="hidden" name="p" value="vote" /><br>
+        Vote in Poll:
+        <input type="number" name="election" placeholder="Enter Poll ID"/>
+        <input type="submit" value = "Vote in Poll!">
+    </form>
+    <form action="index.php" method="get">
+        <input type="hidden" name="p" value="view"/><br/>
+        View Poll results:
+        <input type="number" name="election" placeholder="Enter Poll ID"/>
+        <input type="submit" value = "View Results"/>
+    </form>
 {% endblock %}

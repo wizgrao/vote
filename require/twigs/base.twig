@@ -4,14 +4,27 @@
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
-    <style type="text/css">body{background-color:#EEE;margin:40px
-        auto;max-width:650px;line-height:1.6;font-size:18px;color:#444;padding:0
-        10px}h1,h2,h3{line-height:1.2}</style>
+    <style type="text/css">
+        body {
+            background-color: #EEE;
+            margin: 40px auto;
+            max-width: 650px;
+            line-height: 1.6;
+            font-size: 18px;
+            color: #444;
+            padding: 0 10px
+        }
+
+        h1, h2, h3 {
+            line-height: 1.2
+        }
+    </style>
 
     {% block additionalHead %}{% endblock %}
     <title>{% block title %}Vote!{% endblock %}</title>
 </head>
 <body>
+<a href="index.php">Back to Vote Site</a>
 {% block content %}{% endblock %}
 </body>
 </html>
