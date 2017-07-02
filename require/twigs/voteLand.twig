@@ -1,0 +1,20 @@
+{% extends "base.twig" %}
+{% block additionalHead %}
+    <script>
+        $(document).ready(function() {
+
+        });
+    </script>
+
+
+{% endblock %}
+{% block content %}
+    <ul>
+        {% for error in errors %}
+            <li>{{ error }}</li>
+        {% endfor %}
+    </ul>
+
+    <h2>Poll: {{ electionName }}</h2><br>
+    Your vote has been submitted!
+{% endblock %}

@@ -45,8 +45,10 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
 
             foreach($_POST['candidate'] as $candidateID => $rank){
                 $voteStatement->execute();
-
             }
+            echo $environ->render("voteLand.twig", array("userNum" => $_SESSION['vid'], "errors" => $error,  "electionName" => $electionName, "election"=>$_GET['election']));
+
+
         }
     }
 }else {
